@@ -1,0 +1,88 @@
+body{
+    background-color: var(--background-color);
+    min-width: 600px;
+}
+
+.div-tool{
+    height: 5em;
+}
+
+.tool-item .icon{
+    font-size: 1.4em;
+    color: rgb(71,183,255);
+}
+.tool-item .text{
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.tool-item{
+    transition: 350ms;
+    cursor: pointer;
+}
+.tool-item:hover{
+    background-color: #b8d7f0;
+}
+
+.line{
+    width: 18rem;
+    height: 1px;
+    margin-bottom: 2rem;
+    background-color: rgba(0,0,0,.2);
+}
+.select-common{
+    width: 65%;
+    height: 48px;
+    font-size: 1.5rem;
+}
+
+#printer{
+    margin-left: 24px;
+    border: none;
+    font-size: 20px;
+    outline: none;
+}
+
+#submit{
+    font-size: 1.2em;
+    font-weight: bold;
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    border: none;
+    color: white;
+    width:45%;
+    height: 48px;
+    border-radius: 12px;
+    transition: 300ms;
+}
+
+#submit:hover{
+    opacity: 80%;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+}
+
+.image-show{
+    height: 18em;
+    width: 100%;
+    background-color: rgb(248,249,253);
+    border-radius: 12px;
+    margin-bottom: 24px;
+    padding: 12px;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: nowrap;
+
+}
+
+#div-cropper{
+    height: calc(100% - 5em);
+}
+
+.show-item{
+    background-color: #fff;
+    flex:none;
+    margin-right: 24px;
+    border-radius: 12px;
+}

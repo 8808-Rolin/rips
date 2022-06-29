@@ -1,0 +1,26 @@
+.div-md{
+    border-radius: 36px;
+    width: 90%;
+    padding: 36px;
+    margin-top: 2rem;
+    background-color: white;
+}
+.div-btn{
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+.div-btn div{
+    height: 3em;
+    width: 14em;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-radius: 36px;
+    background-color: rgb(41,131,255);
+    box-shadow: rgba(0,0,0,.3) 0 0 15px;
+    transition: 250ms;
+    color: white;
+}
+
+.div-btn div:hover{
+    background-color: rgb(37, 118, 232);
+}

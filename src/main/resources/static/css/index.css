@@ -1,0 +1,93 @@
+@font-face{
+    font-family: "PingFang-SC-R";
+    src:url("/fonts/PingFangSC-R.ttf") format("truetype");
+}
+@font-face{
+    font-family: "PingFang-SC-B";
+    src:url("/fonts/PingFangSC-B.ttf") format("truetype");
+}
+
+:root{
+    --bs-body-font-family: PingFang-SC-B,PingFang-SC-R,sans-serif;
+}
+body{
+    background-color: rgb(252,252,252);
+}
+
+
+.nav-me{
+    height: 4.96rem;
+    background-color: #fff;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+}
+
+.body-me{
+    margin-top:5.5rem;
+    height: calc(100vh - 6rem);
+}
+
+.line{
+    width: 12rem;
+    height: 1px;
+    margin-bottom: 2rem;
+    background-color: rgba(0,0,0,.1);
+}
+
+.btn-me{
+    height: 60px;
+    width: 256px;
+    border-radius: 36px;
+    padding: 0.5em 2.2em;
+    background-color: transparent;
+    cursor: pointer;
+    user-select: none;
+    color: white;
+    background-image: linear-gradient(to right, #03a9f4, #f441a5, #ffeb3b, #09a8f4);
+    background-size: 400%;
+    z-index: 1;
+    border: none;
+    font-family: PingFang-SC-R,sans-serif;
+}
+.btn-me:hover {
+    /* 动画 名称 时间 infinite 是无限次播放 */
+    animation: sun 8s infinite;
+}
+
+.btn-me:hover::before {
+    animation: sun 8s infinite;
+}
+
+@keyframes sun {
+    100% {
+        /* 背景位置 */
+        background-position: -400% 0;
+    }
+}
+
+.logo-me{
+    height: 48px;
+    width: 48px;
+}
+
+@media (max-width: 992px) {
+    .nav-me{
+        height: 8rem;
+    }
+    .logo-me{
+        height: 72px;
+        width: 72px;
+    }
+    .body-me{
+        margin-top:0;
+        /*height: calc(100vh - 16rem);*/
+        height: 75vh;
+    }
+    .btn-me{
+        height: 100px;
+        width: 350px;
+        border-radius: 50px;
+        font-size: 28px;
+    }
+
+}
+

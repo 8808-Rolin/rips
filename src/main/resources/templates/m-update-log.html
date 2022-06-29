@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>更新日志 - 互联自助打印服务</title>
+    <link rel="shortcut icon" href="/img/logo-28.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/m-update.css">
+    <link rel="stylesheet" href="/css/m-common.css">
+</head>
+<body>
+
+<nav class="navbar nav-me navbar-light">
+    <div class="container">
+        <a class="d-flex align-items-center text-decoration-none " href="/">
+            <img src="/img/logo-256.png" alt="" class="d-inline-block align-text-top logo-me"
+                 style="margin-right: 16px">
+            <span class="fs-1 text-black fw-bolder">互联自助打印服务</span>
+        </a>
+    </div>
+</nav>
+
+<section>
+    <div class="container-fluid div-shadow div-md">
+        <div id="content" class="m-3" ></div>
+    </div>
+</section>
+
+<section>
+    <div class="container-fluid d-flex flex-row justify-content-center align-items-center div-btn">
+        <div id="back" class="d-flex justify-content-center align-items-center">返回上一级</div>
+    </div>
+</section>
+
+
+<script src="/js/bootstrap.bundle.js"></script>
+<script src="/js/jquery-3.6.0.js"></script>
+<script src="/js/marked.min.js"></script>
+<script>
+    $(function(){
+        $.ajax({
+            type:"get",
+            url:"/file/changelog.md",
+            dataType:"html",
+            success:function(res){
+                show(res)
+            }
+        })
+
+        function show(data) {
+            document.getElementById('content').innerHTML = marked.parse(data);
+        }
+    })
+
+    $('#back').bind('click',function (){
+        history.back()
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>互联自助打印服务</title>
+    <link rel="stylesheet" href="/css/choose_print.css"/>
+    <link rel="shortcut icon" href="/img/logo-28.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/m-common.css">
+</head>
+<body>
+<nav class="navbar nav-me navbar-light">
+    <div class="container">
+        <a class="d-flex align-items-center text-decoration-none " href="/">
+            <img src="/img/logo-256.png" alt="" class="d-inline-block align-text-top logo-me"
+                 style="margin-right: 16px">
+            <span class="fs-1 text-black fw-bolder">互联自助打印服务</span>
+        </a>
+    </div>
+</nav>
+
+<section>
+    <div class="container-fluid row gy-5" style="margin-right:auto;margin-left:auto;margin-top: auto;">
+        <div class="d-flex flex-column justify-content-start align-items-center">
+            <p style="font-size: 48px">欢迎使用</p>
+            <p class=" text-danger fw-bolder " style="font-size: 48px">乌托邦</p>
+            <p class=" fw-bold" style="font-size: 60px">自助打印服务</p>
+            <p class="fs-5 " style="color:rgba(51,51,51,.2)">WELCOME TO WUTOPIA PRINT SERVER</p>
+            <span class="line"></span>
+        </div>
+
+        <div class="card-common div-shadow col-12 card-long" id="jpg-print">
+            <div class="icon">
+                <i class="bi bi-file-image-fill"></i>
+            </div>
+            <div class="text">
+                <p class="func-title  fw-bolder">图片/照片打印</p>
+                <p class="func-desc">快速打印照片/图片 (JPEG/PNG)格式</p>
+            </div>
+        </div>
+
+        <div class="card-common div-shadow col-12 card-long">
+            <div class="icon">
+                <i class="bi bi-filetype-pdf"></i>
+            </div>
+            <div class="text">
+                <p class="func-title  fw-bolder">PDF文档打印</p>
+                <p class="func-desc">快速打印PDF文档、电子书、练习册</p>
+            </div>
+        </div>
+
+        <div class="card-common div-shadow col-12 card-long">
+            <div class="icon">
+                <i class="bi bi-file-earmark-word-fill"></i>
+            </div>
+            <div class="text">
+                <p class="func-title  fw-bolder">Word文档打印</p>
+                <p class="func-desc">打印Word文档(可能会出现排版错误，建议导出PDF打印)</p>
+            </div>
+        </div>
+
+        <div class="card-common div-shadow col-12 card-long">
+            <div class="icon">
+                <i class="bi bi-qr-code-scan"></i>
+            </div>
+            <div class="text">
+                <p class="func-title  fw-bolder">打印二维码</p>
+                <p class="func-desc">即时生成二维码并打印</p>
+            </div>
+        </div>
+
+        <div class="card-common div-shadow col-5 card-short">
+            <div class="icon">
+                <i class="bi bi-printer-fill"></i>
+            </div>
+            <div class="text">扫描仪</div>
+        </div>
+        <div class="col-2"></div>
+        <div class="card-common div-shadow col-5 card-short" id="log">
+            <div class="icon">
+                <i class="bi bi-cloud-arrow-up-fill"></i>
+            </div>
+            <div class="text">更新日志</div>
+        </div>
+        <div class="card-common div-shadow col-12 card-long" id="back">
+            <div class="icon">
+                <i class="bi bi-house-fill"></i>
+            </div>
+            <div class="text">
+                <p class="func-title  fw-bolder">返回首页</p>
+                <p class="func-desc">Back to home page</p>
+            </div>
+        </div>
+        <div class=" col-12"></div>
+    </div>
+
+</section>
+
+<script src="/js/bootstrap.bundle.js"></script>
+<script src="/js/jquery-3.6.0.js"></script>
+<script>
+    $('.card-long .icon').css('width',$('.card-long .icon').height())
+    $('#back').bind('click',function () {
+        location.href = "/";
+    })
+    $('#jpg-print').bind('click',function () {
+        location.href = "/print";
+    })
+    $('#log').bind('click',function () {
+        location.href = "/changelog"
+    })
+
+</script>
+</body>
+</html>

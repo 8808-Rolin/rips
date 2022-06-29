@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>互联自助打印服务 - 移动版</title>
+    <link rel="shortcut icon" href="/img/logo-28.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/m-common.css">
+    <link rel="stylesheet" href="/css/m-print.css">
+    <link rel="stylesheet" href="/css/cropper.css">
+</head>
+
+<body>
+<nav class="navbar nav-me navbar-light">
+    <div class="container">
+        <a class="d-flex align-items-center text-decoration-none " href="/">
+            <img src="/img/logo-256.png" alt="" class="d-inline-block align-text-top logo-me"
+                 style="margin-right: 16px">
+            <span class="fs-1 text-black fw-bolder">互联自助打印服务</span>
+        </a>
+    </div>
+</nav>
+
+<section>
+    <div class="container-fluid d-flex flex-column justify-content-center align-items-center mt-5">
+        <img src="/img/logo-256.png" width="192px" class="img">
+        <p class=" fs-1 fw-bolder text-danger">图片打印</p>
+        <p class=" fs-4  text-secondary">请上传JPEG/PNG格式图片</p>
+        <div class="row w-100 mt-5">
+            <div class=" div-shadow card-common col-8" id="choose-img">
+                <div class="icon">
+                    <i class="bi bi-cloud-upload"></i>
+                </div>
+                <div class="text">
+                    <p class="fs-1 fw-bolder">上传一张新图片</p>
+                    <p class="fs-5">请从相册或者文件管理中选择一张图片</p>
+                </div>
+            </div>
+            <div class=" col-1"></div>
+            <div class=" div-shadow card-common col-3" id="back-to">
+                <div class="icon">
+                    <i class="bi bi-backspace-fill"></i>
+                </div>
+                <div class="text">
+                    <p class="fs-3 fw-bolder">返回上一级</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container div-shadow mt-5  overflow-auto image-show d-flex flex-row flex-nowrap justify-content-start align-items-center d-none"
+         id="show">
+
+    </div>
+
+    <div class="container div-shadow mt-3  overflow-hidden p-4 d-none" id="div-cropper">
+        <input type="file" name="file" id="image-input" class="d-none" accept="image/jpg,image/jpeg,image/png" />
+        <div style="max-width:100%;width: 100%; height: 50vh;overflow: hidden;border-radius: 36px;">
+            <img id="img-cropper" />
+        </div>
+    </div>
+
+    <div class="container-fluid div-shadow div-tool mt-3 row overflow-hidden w-100 d-none" id="tool">
+        <div class="col-2 tool-item d-flex flex-column justify-content-center align-items-center h-100" id="delete">
+            <div class="icon">
+                <i class="bi bi-trash3"></i>
+            </div>
+            <span class="text">
+                    删除
+                </span>
+        </div>
+        <div class="col-2 tool-item d-flex flex-column justify-content-center align-items-center h-100" id="rotate">
+            <div class="icon">
+                <i class="bi bi-arrow-clockwise"></i>
+            </div>
+            <span class="text">
+                    旋转
+                </span>
+        </div>
+        <div class="col-2 tool-item d-flex flex-column justify-content-center align-items-center h-100" id="plus">
+            <div class="icon">
+                <i class="bi bi-plus-circle"></i>
+            </div>
+            <span class="text">
+                    放大
+                </span>
+        </div>
+        <div class="col-2 tool-item d-flex flex-column justify-content-center align-items-center h-100" id="minus">
+            <div class="icon">
+                <i class="bi bi-dash-circle"></i>
+            </div>
+            <span class="text">
+                    缩小
+                </span>
+        </div>
+        <div class="col-2 tool-item d-flex flex-column justify-content-center align-items-center h-100" id="reset">
+            <div class="icon">
+                <i class="bi bi-arrow-repeat"></i>
+            </div>
+            <span class="text">
+                    重置
+                </span>
+        </div>
+        <div class="col-2 tool-item d-flex flex-column justify-content-center align-items-center h-100" id="apply">
+            <div class="icon">
+                <i class="bi bi-check2-square"></i>
+            </div>
+            <span class="text">
+                    应用
+                </span>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container d-flex flex-column justify-content-start align-items-center mt-5 div-shadow p-3">
+        <p class="fs-2 fw-bolder">打印选项</p>
+        <span class="line"></span>
+        <div class="w-100 d-flex flex-row justify-content-around align-items-center mb-5">
+            <p class="m-0 fs-2 fw-bold">纸张大小</p>
+            <select class="form-select select-common" id="size">
+                <option selected value="4">ISO_A4</option>
+                <option disabled value="5">ISO_A5</option>
+                <option disabled value="3">ISO_A3</option>
+            </select>
+        </div>
+        <div class="w-100 d-flex flex-row justify-content-around align-items-center mb-5">
+            <p class="m-0 fs-2 fw-bold">纸张类型</p>
+            <select class="form-select select-common" id="type">
+                <option selected value="0">标准A4 打印纸</option>
+            </select>
+        </div>
+        <div class="w-100 d-flex flex-row justify-content-around align-items-center mb-5">
+            <p class="m-0 fs-2 fw-bold">墨水浓度</p>
+            <select class="form-select select-common" id="density">
+                <option selected value="0">正常浓度</option>
+            </select>
+        </div>
+        <div class="w-100 d-flex flex-row justify-content-around align-items-center mb-5">
+            <p class="m-0 fs-2 fw-bold">打印份数</p>
+            <input type="number" class="select-common form-control" id="num" value="1" />
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container div-shadow mt-5 d-flex flex-row justify-content-between align-items-center overflow-hidden p-0"
+         style="height: 120px;">
+        <select class="form-select " style="width:40%" id="printer">
+            <option selected value="b185">KONICA MINOLTA b185e</option>
+        </select>
+        <button class=" h-100" id="submit">加入打印队列</button>
+    </div>
+</section>
+
+<!-- ajax加载动画 -->
+<div id="loading" class=" position-absolute h-100 w-100 d-flex justify-content-center align-items-center d-none" style="top: 0;left:0;background-color: rgba(223, 224, 232, 0.6);">
+    <div class="d-flex align-items-center ">
+        <strong class="fs-1">正在提交中，请稍等片刻......   </strong>
+        <div class="spinner-border ms-auto" role="status" aria-hidden="true"
+             style="width: 4em;height: 4em;"></div>
+    </div>
+</div>
+
+
+<script src="/js/bootstrap.bundle.js"></script>
+<script src="/js/jquery-3.6.0.js"></script>
+<script src="/js/cropper.js"></script>
+<script src="/js/jquery-cropper.js"></script>
+<script src="/js/m-print.js"></script>
+
+
+</body>
+
+</html>

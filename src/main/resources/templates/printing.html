@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>互联自助打印服务 - PC端</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <!-- Custom fonts for this template-->
+    <link rel="shortcut icon" href="/img/logo-28.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/m-common.css">
+    <link rel="stylesheet" href="/css/print-me.css">
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="/css/sb-admin-2.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/cropper.css">
+
+
+</head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <div class="sidebar-brand-icon rotate-n-15">
+                <img src="/img/logo-256.png" alt="logo" width="36px">
+            </div>
+            <div class="sidebar-brand-text mx-3">互联自助打印服务</div>
+        </a>
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item active">
+            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+               aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>激光打印</span>
+            </a>
+            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">请选择打印类型：</h6>
+                    <a class="collapse-item active" href="#">图片打印</a>
+                    <a class="collapse-item" href="#">PDF打印</a>
+                    <a class="collapse-item" href="#">Word文档打印</a>
+                </div>
+            </div>
+        </li>
+
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+               aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-fw fa-wrench"></i>
+                <span>制图并打印</span>
+            </a>
+            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                 data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">请选择你要制作的类型:</h6>
+                    <a class="collapse-item" href="utilities-color.html">二维码打印</a>
+                </div>
+            </div>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            非印刷功能
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>扫描文档</span></a>
+        </li>
+
+        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+            <a class="nav-link" href="/changelog">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>更新日志</span></a>
+        </li>
+
+        <!-- Nav Item - Tables -->
+        <li class="nav-item">
+            <a class="nav-link" href="/">
+                <i class="fas fa-fw fa-table"></i>
+                <span>返回首页</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+    </ul>
+    <!-- End of Sidebar -->
+
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content ">
+            <div class="container-fluid mt-5">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class=" text-black fw-bolder fs-1">
+                        图片打印 <span class="text-secondary fs-6 fw-normal d-none d-md-block">请上传 JPG/PNG 格式图片</span>
+                    </h1>
+                    <a href="#" class="btn btn-primary btn-icon-split " id="choose-img">
+                    <span class="icon text-white-50">
+                      <i class="bi bi-cloud-arrow-up-fill"></i>
+                    </span>
+                        <span class="text">上传图片</span>
+                    </a>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 d-none" id="div-crop">
+                        <div class="card shadow bg-white mb-4 " style="height: calc(100% - 1.5em);" >
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">裁剪框</h6>
+                            </div>
+                            <div class="card-body d-flex flex-column overflow-hidden pb-0" >
+                                <div id="div-cropper">
+                                    <input type="file" name="file" id="image-input" class="d-none"
+                                           accept="image/jpg,image/jpeg,image/png"/>
+                                    <div style="max-width:100%;width: 100%; height: 50vh;overflow: hidden;border-radius: 36px;">
+                                        <img id="img-cropper"/>
+                                    </div>
+                                </div>
+
+                                <div class="div-tool w-100 d-flex flex-row align-items-center" id="tool">
+                                    <div class="col-2 tool-item d-flex flex-column justify-content-center align-items-center h-100"
+                                         id="delete">
+                                        <div class="icon">
+                                            <i class="bi bi-trash3"></i>
+                                        </div>
+                                        <span class="text d-none d-xl-block">
+                                            删除
+                                        </span>
+                                    </div>
+                                    <div class="col-2 tool-item d-flex flex-column justify-content-center align-items-center h-100"
+                                         id="rotate">
+                                        <div class="icon">
+                                            <i class="bi bi-arrow-clockwise"></i>
+                                        </div>
+                                        <span class="text d-none d-xl-block">
+                                            旋转
+                                        </span>
+                                    </div>
+                                    <div class="col-2 tool-item d-flex flex-column justify-content-center align-items-center h-100"
+                                         id="plus">
+                                        <div class="icon">
+                                            <i class="bi bi-plus-circle"></i>
+                                        </div>
+                                        <span class="text d-none d-xl-block">
+                                            放大
+                                        </span>
+                                    </div>
+                                    <div class="col-2 tool-item d-flex flex-column justify-content-center align-items-center h-100"
+                                         id="minus">
+                                        <div class="icon">
+                                            <i class="bi bi-dash-circle"></i>
+                                        </div>
+                                        <span class="text d-none d-xl-block">
+                                            缩小
+                                        </span>
+                                    </div>
+                                    <div class="col-2 tool-item d-flex flex-column justify-content-center align-items-center h-100"
+                                         id="reset">
+                                        <div class="icon">
+                                            <i class="bi bi-arrow-repeat"></i>
+                                        </div>
+                                        <span class="text d-none d-xl-block">
+                                            重置
+                                        </span>
+                                    </div>
+                                    <div class="col-2 tool-item d-flex flex-column justify-content-center align-items-center h-100"
+                                         id="apply">
+                                        <div class="icon">
+                                            <i class="bi bi-check2-square"></i>
+                                        </div>
+                                        <span class="text d-none d-xl-block">
+                                            应用
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card shadow bg-white mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">打印内容</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="image-show d-none" id="show">
+
+                                </div>
+                                <div class="d-flex flex-column align-items-center justify-content-around">
+                                    <p class="fs-4 fw-bold">打印选项</p>
+                                    <span class="line"></span>
+                                    <div class="w-100 d-flex flex-row justify-content-around align-items-center mb-5">
+                                        <p class="m-0 fs-4 fw-bold">纸张大小</p>
+                                        <select class="form-select select-common" id="size">
+                                            <option selected value="4">ISO_A4</option>
+                                            <option disabled value="5">ISO_A5</option>
+                                            <option disabled value="3">ISO_A3</option>
+                                        </select>
+                                    </div>
+                                    <div class="w-100 d-flex flex-row justify-content-around align-items-center mb-5">
+                                        <p class="m-0 fs-4 fw-bold">纸张类型</p>
+                                        <select class="form-select select-common" id="type">
+                                            <option selected value="0">标准A4 打印纸</option>
+                                        </select>
+                                    </div>
+                                    <div class="w-100 d-flex flex-row justify-content-around align-items-center mb-5">
+                                        <p class="m-0 fs-4 fw-bold">墨水浓度</p>
+                                        <select class="form-select select-common" id="density">
+                                            <option selected value="0">正常浓度</option>
+                                        </select>
+                                    </div>
+                                    <div class="w-100 d-flex flex-row justify-content-around align-items-center mb-5">
+                                        <p class="m-0 fs-4 fw-bold">打印份数</p>
+                                        <input type="number" class="select-common form-select" id="num" value="1" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 d-none d-lg-block">
+                        <div class="card shadow bg-white mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">打印注意事项</h6>
+                            </div>
+                            <div class="card-body">
+                                <p>欢迎使用乌托邦互联自助打印服务</p>
+                                <p>
+                                    &nbsp;&nbsp;1. 请先确保你处在乌托邦内网环境中，连接至WIFI：乌托邦、乌托邦_5G，或使用网线连接至乌托邦网络中。<br>
+                                    &nbsp;&nbsp;2. 目前应用提供的功能较为有限，将在未来逐步完善。<br>
+                                    &nbsp;&nbsp;3. 机器冷启动时需要预热15s - 60s 请耐心等待<br>
+                                    &nbsp;&nbsp;4.
+                                    使用本服务时，你所打印的文档将在服务器中留存存档30天，30天后将自动删除，文档将加密保存，请放心使用，当你点击打印时，将默认同意本条事项。<br>
+                                    &nbsp;&nbsp;5. 乌托邦互联自助打印服务：<a
+                                        href="http://print.30202.co/">http://print.30202.co/</a> （内网）<br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card shadow bg-white mb-4 " style="min-height: calc(100% - 1.5em);">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">确认打印</h6>
+                            </div>
+                            <div class="card-body d-flex flex-row flex-lg-column justify-content-around align-items-center" >
+                                <select class="form-select " style="width:50%" id="printer">
+                                    <option selected value="b185">KONICA MINOLTA b185e</option>
+                                </select>
+                                <button id="submit">加入打印队列</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                        <span>Copyright &copy氯磷Rolin
+                            <a class=" link-secondary" href="http://beian.miit.gov.cn/"
+                               target="_blank">粤ICP备2020103045号</a>
+                            <a class=" link-secondary"
+                               href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44520202000396"
+                               target="_blank">
+                            <img src="//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.3.1/source/images/other/gongan.png">
+                                粤公网安备 44520202000396号
+                            </a>
+                        </span>
+                </div>
+            </div>
+        </footer>
+        <!-- End of Footer -->
+    </div>
+    <!-- End of Content Wrapper -->
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- ajax加载动画 -->
+<div id="loading" class=" position-absolute h-100 w-100  justify-content-center align-items-center d-none" style="top: 0;left:0;background-color: rgba(223, 224, 232, 0.6);">
+    <div class="d-flex align-items-center ">
+        <strong class="fs-1">正在提交中，请稍等片刻......   </strong>
+        <div class="spinner-border ms-auto" role="status" aria-hidden="true"
+             style="width: 4em;height: 4em;"></div>
+    </div>
+</div>
+
+
+<!-- Bootstrap core JavaScript-->
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="/js/sb-admin-2.min.js"></script>
+<script src="/js/cropper.js"></script>
+<script src="/js/jquery-cropper.js"></script>
+<script src="/js/p-print.js"></script>
+
+
+
+</body>
+
+
+</html>

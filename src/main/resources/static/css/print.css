@@ -1,0 +1,306 @@
+:root{
+    --light-blue:#B3C0D3;
+    --background-color: #fcfcfc
+}
+
+.photo-box {
+    display: none;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template: 1fr/19.5rem 1fr;
+    background-color: var(--background-color);
+}
+body nav {
+    width: 19.5rem;
+    height: 100vh;
+    background-color: #FFF;
+    border-right: rgba(225, 225, 225, 0.8) 0.0625rem solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+body nav .photo-box {
+    width: 100%;
+    height: 10rem;
+    margin-top: 4.8125rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+body nav .photo-box .photo {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+body nav .photo-box .name {
+    margin-top: 0.5rem;
+    height: 24px;
+    font-size: 1.125rem;
+    font-weight: bolder;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: #3D3D3D;
+}
+body nav .accordion-box {
+    width: 100%;
+    height: 1.5rem;
+    position: relative;
+    padding-left: 4rem;
+    margin-top: 2.875rem;
+}
+
+.accordion-item{
+    margin-top: 36px;
+    border: none;
+}
+
+body nav .accordion-box .accordion-item .accordion-header {
+    height: 1.5rem;
+    padding: 0.625rem 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    line-height: 1.5rem;
+    color: #6E85A8;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+body nav .accordion-box .accordion-item .sub-options {
+    overflow: hidden;
+    padding-left: 2rem;
+    transition: all 0.3s;
+}
+body nav .accordion-box .accordion-item .sub-options .option {
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 0;
+    letter-spacing: 0;
+    color: #6E85A8;
+    cursor: pointer;
+    margin-top: 16px;
+}
+body nav .accordion-box .accordion-active .sub-options {
+    height: 6rem;
+    opacity: 1;
+}
+body nav .accordion-box #flag {
+    width: 0;
+    height: 0;
+    border: solid 0.625rem transparent;
+    border-left-color: #2b7ff3;
+    position: absolute;
+    top:72px;
+    left: 2.3rem;
+    transition: all 0.3s;
+}
+
+@media screen and (max-width: 574px) {
+    body {
+        display: block;
+    }
+
+    body nav {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        z-index: 3;
+        grid-template-columns: none;
+        transform: translateX(-100%);
+        opacity: 0;
+        transition: .3s;
+    }
+
+    .photo-box {
+        width: 100vw;
+        height: 6rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 5;
+        background-color: #fff;
+        border-bottom: rgba(225, 225, 225, 0.8) 0.0625rem solid;
+    }
+
+    .photo-box .photo {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    body nav .accordion-box #flag{
+        top: 87px;
+    }
+    .photo-box>img {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin: 0 1rem;
+        transition: all .3s;
+    }
+
+    .photo-box[isopen = "false"] #menu {
+        transform: rotateZ(90deg);
+    }
+
+    .photo-box[isopen = "ture"] ~ nav {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    body nav .photo-box {
+        height: 6.875rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: rgba(225, 225, 225, 0.8) 0.0625rem solid;
+        display: none;
+    }
+
+
+    body nav .photo-box .photo {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    body nav .photo-box .name {
+        display: none;
+    }
+
+    body nav .accordion-box {
+        height: calc(100vh - 110px);
+        position: fixed;
+        top: 6.875rem;
+        margin-top: 0;
+        padding-top: 1rem;
+    }
+
+    body .container {
+        min-width: 0;
+        width: 100vw;
+        height: calc(100vh - 6rem);
+        padding: 0;
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: 0.25rem repeat(3, 1fr) 3rem 0.25rem;
+        grid-template-rows: repeat(13, 92px) 5rem;
+        grid-template-areas: ". header header header header ."
+		". picture picture picture tool ."
+		". picture picture picture tool ."
+		". picture picture picture tool ."
+		". picture picture picture tool ."
+		". queue queue queue queue ."
+		". queue queue queue queue ."
+		". other other other other ."
+		". other other other other ."
+		". other other other other ."
+		". other other other other ."
+		". other other other other ."
+		". other other other other ."
+		". other other other other ."
+		". . . . . .";
+        position: fixed;
+        overflow-y: scroll;
+        top: 6rem;
+        z-index: 1;
+    }
+
+    body .container .header .title {
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: unset;
+    }
+
+    body .container .header .title div {
+        font-size: 1.5rem;
+    }
+
+    body .container .header .title small {
+        font-size: 0.75rem;
+        margin: 0;
+    }
+
+    body .container .header button {
+        font-size: 0.75rem;
+        width: 10rem;
+        height: 2.5rem;
+    }
+
+    body .container .queue {
+        flex-direction: column;
+    }
+
+    body .container .queue .title {
+        width: 100%;
+        height: 2rem;
+        border-bottom: rgba(225, 225, 225, 0.8) 0.0625rem solid;
+        justify-content: center;
+    }
+
+    body .container .queue .picture-queue {
+        width: 100%;
+        height: calc(100% - 2rem);
+    }
+
+    body .container .tool {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+    }
+
+    body .container .tool .icon {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    body .container .tool .icon img {
+        width: 100%;
+        height: 100%;
+    }
+
+    body .container .other {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(11, 1fr) 5rem;
+        grid-template-areas: "param param param param"
+		"param param param param"
+		"param param param param"
+		"param param param param"
+		"param param param param"
+		"add add add add"
+		"note note note note"
+		"note note note note"
+		"note note note note"
+		"note note note note"
+		"note note note note";
+        grid-gap: 0.5rem;
+    }
+
+    body .container .other .print-param {
+        grid-area: param;
+    }
+
+    body .container .other .note {
+        grid-area: note;
+    }
+
+    body .container .other .add button {
+        width: 8rem;
+    }
+}

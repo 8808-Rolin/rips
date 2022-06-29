@@ -1,0 +1,110 @@
+.div-tool{
+    height: 8.5em;
+}
+
+.tool-item .icon{
+    font-size: 3em;
+    color: rgb(71,183,255);
+}
+.tool-item .text{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.tool-item{
+    transition: 350ms;
+    cursor: pointer;
+}
+.tool-item:hover{
+    background-color: #b8d7f0;
+}
+
+.image-show{
+    height: 18em;
+    width: auto;
+    padding-left: 24px;
+}
+
+.show-item{
+    width: 175px; 
+    height:90%; 
+    background-color: #fff;
+    flex:none; 
+    margin-right: 24px;
+    border-radius: 12px;
+    background-size: auto 100%; 
+    background-repeat: no-repeat;
+}
+
+.item-dele{
+    width: 100%; 
+    height:60px;
+     background-color: rgba(223, 232, 255, .8);
+}
+
+.card-common{
+    height: 224px;
+    cursor: pointer;
+    overflow: hidden;
+    color: white;
+}
+
+#choose-img{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 0!important;
+    background-image: linear-gradient(to right, #a18cd1 0%, #fbc2eb 100%);
+}
+
+#back-to{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to left, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);
+    
+}
+
+#choose-img .icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 6em;
+    color: white;
+    height: 100%;
+    width: 224px;
+}
+
+#back-to .icon{
+    font-size: 4em;
+    color: white;
+}
+
+.line{
+    width: 18rem;
+    height: 1px;
+    margin-bottom: 2rem;
+    background-color: rgba(0,0,0,.2);
+}
+.select-common{
+    width: 65%;
+    height: 48px;
+    font-size: 1.5rem;
+}
+#submit{
+    font-size: 32px;
+    font-weight: bolder;
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    border: none;
+    color: white;
+    width:40%
+}
+
+#printer{
+    margin-left: 24px;
+    border: none;
+    font-size: 20px;
+    outline: none;
+}

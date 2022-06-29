@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>互联自助打印服务 - IPS - Rolin World System</title>
+    <link rel="shortcut icon" href="img/logo-28.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <nav class="navbar nav-me fixed-top">
+        <div class="container">
+            <a class="d-flex align-items-center text-decoration-none " href="/">
+                <img src="/img/logo-256.png" alt=""  class="d-inline-block align-text-top logo-me" style="margin-right: 16px">
+                <span class="fs-4 text-black d-none d-lg-block">互联自助打印服务</span>
+                <span class="fs-1 text-black d-lg-none">互联自助打印服务</span>
+            </a>
+        </div>
+    </nav>
+
+    <section>
+        <div class="container d-flex flex-column justify-content-center align-items-center body-me overflow-hidden"  >
+            <p class="fs-2  mb-0 d-none d-lg-block" style="margin-top: 2rem">欢迎使用<span class="text-danger"> 乌托邦 </span>自助打印服务</p>
+            <p class="fs-5 d-none d-lg-block" style="color:rgba(51,51,51,.2)">WELCOME TO WUTOPIA PRINT SERVER</p>
+            <p class="d-block d-lg-none" style="font-size: 48px">欢迎使用</p>
+            <p class="d-block d-lg-none text-danger" style="font-size: 48px">乌托邦</p>
+            <p class="d-block d-lg-none" style="font-size: 60px">自助打印服务</p>
+            <p class="fs-5 d-block d-lg-none" style="color:rgba(51,51,51,.2)">WELCOME TO WUTOPIA PRINT SERVER</p>
+
+            <span class="line"></span>
+            <button class="btn-me" id="btn-submit">
+                开始激光打印
+            </button>
+            <img src="/img/img-1.png" alt="柯尼卡美能达185B" class="d-none d-lg-block" width="500px">
+            <span class="d-none d-lg-block" style="font-size: 1px;color: rgba(0,0,0,0.3);font-family: PingFang-SC-R">*注：上文“印”是印刷的印，并非印度的印</span>
+            <span class="line d-block d-lg-none mt-5"></span>
+            <span class="fs-6 text-secondary d-block d-lg-none" style="font-family: PingFang-SC-R,sans-serif">---  Rolin World System Part  ---</span>
+            <a class="fs-6 link-secondary text-decoration-none d-block d-lg-none" style="font-family: PingFang-SC-R,sans-serif" href="http://beian.miit.gov.cn/" target="_blank">粤ICP备2020103045号</a>
+            <a class="fs-6 link-secondary text-secondary text-decoration-none d-block d-lg-none" style="font-family: PingFang-SC-R,sans-serif" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44520202000396" target="_blank">
+                <img src="//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.3.1/source/images/other/gongan.png">粤公网安备 44520202000396号
+            </a>
+
+        </div>
+    </section>
+    <div class="d-block d-lg-none w-100 fixed-bottom overflow-hidden" style="bottom: 0;left:0;z-index:-1;">
+        <img src="/img/img-1.png" alt="柯尼卡美能达185B" style="width: 125%;position:relative;bottom: -400px;transition: 3000ms;opacity: 0%" id="img-sm">
+    </div>
+
+
+    <footer class="d-none d-lg-block">
+        <div class="container-fluid  text-light text-center fixed-bottom" style="background-color: #f9f9f9;font-family: PingFang-SC-R,sans-serif;font-size: 12px;">
+            <span class=" text-secondary">Copyright &copy氯磷Rolin  --- Rolin World System Part --- </span>
+            <br>
+            <a class=" link-secondary" href="http://beian.miit.gov.cn/" target="_blank">粤ICP备2020103045号</a>
+            <a class=" link-secondary" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44520202000396" target="_blank">
+                <img src="//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.3.1/source/images/other/gongan.png">粤公网安备 44520202000396号
+            </a>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/jquery-3.6.0.js"></script>
+    <script>
+        $('#btn-submit').bind('click',function () {
+            location.href='/start';
+        })
+        $('#img-sm').css("opacity","100%")
+
+    </script>
+</body>
+</html>

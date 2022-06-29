@@ -1,0 +1,88 @@
+.card-common{
+    height: 320px;
+    cursor: pointer;
+    overflow: hidden;
+    color: white;
+}
+
+.line{
+    width: 12rem;
+    height: 1px;
+    margin-bottom: 2rem;
+    background-color: rgba(0,0,0,.1);
+}
+.card-long{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 0!important;
+
+}
+.card-short{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.card-short .icon{
+    font-size: 8em;
+    color: white;
+
+}
+.card-short .text{
+    font-size:48px;
+    color: white;
+    background-image: none!important;
+    font-weight: bold;
+}
+.card-long .icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 320px;
+}
+.card-long .icon i{
+    font-size: 10em;
+    color: white;
+}
+.card-long .text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    background-image: none;
+}
+
+.card-long .text .func-title{
+    font-size:48px;
+}
+.card-long .text .func-desc{
+    font-size: 28px;
+    font-weight: bold;
+    color: rgba(255,255,255,.7);
+}
+
+section div div:nth-child(2){
+    background-image: linear-gradient(to right, #0ba360 0%, #3cba92 100%);
+
+}
+section div div:nth-child(3){
+    background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+}
+section div div:nth-child(4){
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+}
+section div div:nth-child(5){
+    background-image: linear-gradient(to left, #f093fb 0%, #f5576c 100%);
+}
+section div div:nth-child(6){
+    background-image: linear-gradient(to right, #ff0844 0%, #ffb199 100%);
+}
+section div div:nth-child(8){
+    background-image: linear-gradient(to left, #7DE2FC 0%, #B9B6E5 100%);
+}
+section div div:nth-child(9){
+    background-image: linear-gradient(to left, #f9d423 0%, #ff4e50 100%);
+}
