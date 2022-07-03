@@ -9,6 +9,7 @@ public class TestController {
 
     @RequestMapping(value = "/test")
     public String test(){
+        int res = 1 / 0;
         return "test";
     }
 }

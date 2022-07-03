@@ -10,7 +10,7 @@
     </parent>
     <groupId>icu.rolin.ips</groupId>
     <artifactId>InternetPrinterSystem</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.3 - Beta</version>
     <name>InternetPrinterSystem</name>
     <description>InternetPrinterSystem</description>
     <properties>

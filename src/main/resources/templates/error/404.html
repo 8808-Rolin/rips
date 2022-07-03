@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>你所打开的页面找不到啦 - 互联自助打印服务</title>
+    <link rel="shortcut icon" href="/img/logo-28.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/common_css/common.css">
+    <link rel="stylesheet" href="/css/common_css/error.css">
+</head>
+<body class="d-flex justify-content-center align-items-center">
+
+    <div class="container h-75 bg-white div-shadow d-flex flex-column p-0 align-items-center justify-content-between overflow-hidden">
+        <div class="w-100 bg-primary text-white  fs-2 d-flex justify-content-center align-items-center" style="height: 12%">
+            你所打开的页面找不到啦 - 404 NOT FOUND
+        </div>
+        <img src="/img/logo-256.png" alt="" class="d-inline-block align-text-top" style="width: 12%" >
+        <p class="fs-3">错误响应码：<span th:text="${status}"></span></p>
+        <p class="fs-3" >错误类型：<span th:text="${error}"></span></p>
+        <div class="accordion w-75" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button fw-bolder" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        查看具体错误信息
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p class="fs-4">提示：<span th:text="${message}"></span></p>
+                        <p class="fs-4">出错URL：<span th:text="${path}"></span></p>
+                        <p class="fs-4">出现错误的时间：<span th:text="${timestamp}"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-100 bg-danger text-white  fs-2 d-flex justify-content-center align-items-center" id="back" style="height: 12%;cursor: pointer">
+            返回首页
+        </div>
+    </div>
+
+
+
+    <script src="/js/bootstrap.bundle.js"></script>
+
+
+</body>
+</html>

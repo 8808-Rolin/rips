@@ -7,38 +7,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
-public class PrintController {
+public class RouteController {
 
-    @RequestMapping("/")
+    // 首页
+    @RequestMapping({"/","index","index.html"})
     public String index(){
         return "index";
     }
 
+    // 选择页面，如果是PC端则直接重定向至打印页面
     @RequestMapping( "/start")
     public String start(Device device){
         if(device.isMobile()){
-            return "choose_print";
+            return "mobile_page/choose_print";
         }else{
-            return "redirect:/print";
+            return "redirect:/print/image";
         }
     }
 
 
-    @RequestMapping("/print")
+    @RequestMapping({"/print","/print/image"})
     public String print(Device device){
         if(device.isMobile()){
-            return "m-printing";
+            return "mobile_page/m-printing";
         }else{
-            return "printing";
+            return "page/printing";
         }
     }
 
-    @RequestMapping("/changelog")
+    @RequestMapping("/log/changelog")
     public String update(Device device){
         if(device.isMobile()){
-            return "m-update-log";
+            return "mobile_page/m-update-log";
         }else{
-            return "update-log";
+            return "page/update-log";
         }
     }
+
+
 }

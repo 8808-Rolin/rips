@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>更新日志 - 互联自助打印服务</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Custom fonts for this template-->
+    <link rel="shortcut icon" href="/img/logo-28.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/common_css/common.css">
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="/css/sb-admin-2.css" rel="stylesheet">
+
+
+</head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <div th:replace="~{commons/public::pc-menu}"></div>
+
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content ">
+            <div class="container-fluid mt-5">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class=" text-black fw-bolder fs-1">
+                        更新日志 <span class="text-secondary fs-6 fw-normal d-none d-md-block">详情请看Github</span>
+                    </h1>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="card shadow bg-white mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">CHANGE.LOG</h6>
+                            </div>
+                            <div class="card-body">
+                                <div id="content" class="m-3" ></div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+        <!-- End of Main Content -->
+        <div th:replace="~{commons/public::pc_footer}"></div>
+    </div>
+    <!-- End of Content Wrapper -->
+</div>
+<!-- End of Page Wrapper -->
+
+
+
+<!-- Bootstrap core JavaScript-->
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="/js/sb-admin-2.min.js"></script>
+<script src="/js/marked.min.js"></script>
+<script>
+    $("#log_menu_item").addClass("active");
+    $(function(){
+        $.ajax({
+            type:"get",
+            url:"/file/changelog.md",
+            dataType:"html",
+            success:function(res){
+                show(res)
+            }
+        })
+
+        function show(data) {
+            document.getElementById('content').innerHTML = marked.parse(data);
+        }
+    })
+
+    $('#back').bind('click',function (){
+        history.back()
+    })
+</script>
+
+
+</body>
+
+
+</html>

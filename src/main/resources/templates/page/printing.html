@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>互联自助打印服务 - PC端</title>
+    <title>图片打印 - 互联自助打印服务 - PC端</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Rolin">
 
 
     <!-- Custom fonts for this template-->
     <link rel="shortcut icon" href="/img/logo-28.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="/css/m-common.css">
+    <link rel="stylesheet" href="/css/common_css/common.css">
     <link rel="stylesheet" href="/css/print-me.css">
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -23,7 +23,6 @@
     <link href="/css/sb-admin-2.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/cropper.css">
 
-
 </head>
 
 <body id="page-top">
@@ -31,92 +30,7 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-        <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <img src="/img/logo-256.png" alt="logo" width="36px">
-            </div>
-            <div class="sidebar-brand-text mx-3">互联自助打印服务</div>
-        </a>
-
-
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item active">
-            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-               aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-cog"></i>
-                <span>激光打印</span>
-            </a>
-            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">请选择打印类型：</h6>
-                    <a class="collapse-item active" href="#">图片打印</a>
-                    <a class="collapse-item" href="#">PDF打印</a>
-                    <a class="collapse-item" href="#">Word文档打印</a>
-                </div>
-            </div>
-        </li>
-
-        <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-               aria-expanded="true" aria-controls="collapseUtilities">
-                <i class="fas fa-fw fa-wrench"></i>
-                <span>制图并打印</span>
-            </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                 data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">请选择你要制作的类型:</h6>
-                    <a class="collapse-item" href="utilities-color.html">二维码打印</a>
-                </div>
-            </div>
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            非印刷功能
-        </div>
-
-        <!-- Nav Item - Pages Collapse Menu -->
-        <!-- Nav Item - Charts -->
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>扫描文档</span></a>
-        </li>
-
-        <!-- Nav Item - Charts -->
-        <li class="nav-item">
-            <a class="nav-link" href="/changelog">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>更新日志</span></a>
-        </li>
-
-        <!-- Nav Item - Tables -->
-        <li class="nav-item">
-            <a class="nav-link" href="/">
-                <i class="fas fa-fw fa-table"></i>
-                <span>返回首页</span></a>
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
-
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
-    </ul>
-    <!-- End of Sidebar -->
+    <div th:replace="~{commons/public::pc-menu}"></div>
 
 
     <!-- Content Wrapper -->
@@ -297,55 +211,29 @@
         </div>
         <!-- End of Main Content -->
 
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                        <span>Copyright &copy氯磷Rolin
-                            <a class=" link-secondary" href="http://beian.miit.gov.cn/"
-                               target="_blank">粤ICP备2020103045号</a>
-                            <a class=" link-secondary"
-                               href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44520202000396"
-                               target="_blank">
-                            <img src="//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.3.1/source/images/other/gongan.png">
-                                粤公网安备 44520202000396号
-                            </a>
-                        </span>
-                </div>
-            </div>
-        </footer>
-        <!-- End of Footer -->
+        <div th:replace="~{commons/public::pc_footer}"></div>
     </div>
     <!-- End of Content Wrapper -->
 </div>
 <!-- End of Page Wrapper -->
 
-<!-- ajax加载动画 -->
-<div id="loading" class=" position-absolute h-100 w-100  justify-content-center align-items-center d-none" style="top: 0;left:0;background-color: rgba(223, 224, 232, 0.6);">
-    <div class="d-flex align-items-center ">
-        <strong class="fs-1">正在提交中，请稍等片刻......   </strong>
-        <div class="spinner-border ms-auto" role="status" aria-hidden="true"
-             style="width: 4em;height: 4em;"></div>
-    </div>
-</div>
-
+<div th:replace="~{commons/public::ajax}"></div>
 
 <!-- Bootstrap core JavaScript-->
 <script src="/vendor/jquery/jquery.min.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 <!-- Core plugin JavaScript-->
 <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
-
 <!-- Custom scripts for all pages-->
 <script src="/js/sb-admin-2.min.js"></script>
 <script src="/js/cropper.js"></script>
 <script src="/js/jquery-cropper.js"></script>
 <script src="/js/p-print.js"></script>
 
-
-
+<script>
+    $("#print_menu").addClass("active");
+    $('#print_item_image').addClass("active")
+    $('#collapseTwo').addClass("show")
+</script>
 </body>
-
-
 </html>

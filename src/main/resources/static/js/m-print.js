@@ -216,7 +216,7 @@ $('#submit').on("click", function () {
     }
     console.log({data:a})
     $.ajax({
-        url:prelink+"api/print",
+        url:prelink+"api/print/img",
         async:true,
         contentType:"application/json",
         type:"POST",

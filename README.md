@@ -1,4 +1,4 @@
-# 开发更新日志 Development Log
+# README
 
 <div align="center">
     <br/>
@@ -10,15 +10,6 @@
   </h5>
 </div>
 
-<div style="text-align: center;">
-    <img src="/file/image/app-index.png" style="margin-top: 24px;border-radius: 24px;box-shadow: 0 0 6px 0px rgb(0 0 0 / 25%); " width="50%" alt="应用首页" alt="应用首页图片">
-</div>
-
-## 项目概述
-
-- 基于 SpringBoot 实现的跨平台Web自助打印平台。
-- 核心模块包括：打印、扫描、排版、生成内容等多方面内容
-- 代码量少、学习简单、功能强大、易扩展，轻松开发从现在开始！
 
 ## 特别鸣谢
 
@@ -32,6 +23,9 @@
 
 - [优化] 优化项目目录结构
 - [优化] 优化页面访问结构
+- [优化] 精简代码逻辑，节省页面代码
+- [新增] README文档
+- [新增] 初步自定义错误页面
 
 ## [0.0.2 - Beta] - 2022-06-29
 

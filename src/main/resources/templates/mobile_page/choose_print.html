@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>互联自助打印服务</title>
-    <link rel="stylesheet" href="/css/choose_print.css"/>
+    <link rel="stylesheet" href="/css/mobile_css/choose_print.css"/>
     <link rel="shortcut icon" href="/img/logo-28.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="/css/m-common.css">
+    <link rel="stylesheet" href="/css/common_css/common.css">
 </head>
 <body>
 <nav class="navbar nav-me navbar-light">
@@ -102,13 +102,13 @@
 <script>
     $('.card-long .icon').css('width',$('.card-long .icon').height())
     $('#back').bind('click',function () {
-        location.href = "/";
+        location.href = "../../../..";
     })
     $('#jpg-print').bind('click',function () {
-        location.href = "/print";
+        location.href = "/print/image";
     })
     $('#log').bind('click',function () {
-        location.href = "/changelog"
+        location.href = "/log/changelog"
     })
 
 </script>
