@@ -44,5 +44,14 @@ public class RouteController {
         }
     }
 
+    @RequestMapping("/print/pdf")
+    public String pring_pdf(Device device){
+        if(device.isMobile()){
+            return "mobile_page/printing_pdf";
+        }else{
+            return "page/printing_pdf";
+        }
+    }
+
 
 }

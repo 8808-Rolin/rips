@@ -1,0 +1,24 @@
+#choose-pdf .icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 6em;
+    color: white;
+    height: 100%;
+    width: 224px;
+}
+
+.card-common{
+    height: 224px;
+    cursor: pointer;
+    overflow: hidden;
+    color: white;
+}
+#choose-pdf{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 0!important;
+    background-image: linear-gradient(to right, #a18cd1 0%, #fbc2eb 100%);
+}

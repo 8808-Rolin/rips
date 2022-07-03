@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <div class="card-common div-shadow col-12 card-long">
+        <div class="card-common div-shadow col-12 card-long" id="pdf-print">
             <div class="icon">
                 <i class="bi bi-filetype-pdf"></i>
             </div>
@@ -106,6 +106,9 @@
     })
     $('#jpg-print').bind('click',function () {
         location.href = "/print/image";
+    })
+    $('#pdf-print').bind('click',function () {
+        location.href = "/print/pdf"
     })
     $('#log').bind('click',function () {
         location.href = "/log/changelog"

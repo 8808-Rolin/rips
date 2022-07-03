@@ -56,7 +56,7 @@ $("#image-input").bind("change", function (e) {
     var fd = new FormData();
     fd.append('file', file);
     $.ajax({
-        url: prelink + "api/upload/temp-image.do",
+        url: prelink + "api/upload/temp-upload.do",
         dataType: "JSON",
         async: false,
         processData: false,

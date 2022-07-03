@@ -12,9 +12,7 @@ var currentRotate = 0;
 var cropper = null;
 var image = $("#img-cropper")
 
-$("#choose-img").bind('click', function () {
-    $("#image-input").click()
-});
+
 
 $("#rotate").bind("click", function () {
     cropper.rotate(-90);
@@ -28,6 +26,8 @@ $("#minus").bind("click", function () {
 $("#reset").bind("click", function () {
     cropper.reset();
 });
+
+
 
 $('#delete').bind("click", function () {
     $('#div-crop').addClass('d-none');
@@ -46,13 +46,17 @@ $('#delete').bind("click", function () {
     }
 });
 
+$("#choose-img").bind('click', function () {
+    $("#image-input").click()
+});
+
 $("#image-input").bind("change", function (e) {
     console.log(e.target.files);
     var file = e.target.files[0];
     var fd = new FormData();
     fd.append('file', file);
     $.ajax({
-        url: prelink + "api/upload/temp-image.do",
+        url: prelink + "api/upload/temp-upload.do",
         dataType: "JSON",
         async: false,
         processData: false,
@@ -213,7 +217,6 @@ $('#submit').on("click", function () {
             printName: $('#printer').val()
         }
     }
-    console.log({data: a})
     $.ajax({
         url: prelink + "api/print/img",
         async: true,

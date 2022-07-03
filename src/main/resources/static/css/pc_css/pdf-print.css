@@ -1,0 +1,29 @@
+#printer{
+    margin-left: 24px;
+    border: none;
+    font-size: 20px;
+    outline: none;
+}
+
+#submit{
+    font-size: 1em;
+    font-weight: bold;
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    border: none;
+    color: white;
+    width:35%;
+    height: 60px;
+    border-radius: 12px;
+    transition: 300ms;
+}
+
+#submit:hover{
+    opacity: 80%;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+}
+
+.select-common{
+    width: 65%;
+    height: 48px;
+    font-size: 1rem;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PDF印刷 - 互联自助打印服务 - 移动版</title>
+    <link rel="shortcut icon" href="/img/logo-28.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/common_css/common.css">
+    <link rel="stylesheet" href="/css/mobile_css/pdf_page.css">
+
+</head>
+<body>
+    <div th:replace="~{commons/mobile_public::nav}"></div>
+    <div class="container d-flex flex-column justify-content-center align-items-center mt-5">
+        <img src="/img/logo-256.png" width="192px" class="img">
+        <p class=" fs-1 fw-bolder text-danger">PDF印刷</p>
+        <p class=" fs-4  text-secondary">请上传PDF文件</p>
+        <div class="row w-100 mt-5">
+            <div class="div-shadow card-common col-12" id="choose-pdf">
+                <div class="icon">
+                    <i class="bi bi-cloud-upload"></i>
+                </div>
+                <div class="text">
+                    <p class="fs-1 fw-bolder">上传一个新文件</p>
+                    <p class="fs-5">请从相册或者文件管理中选择PDF文件</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 ">
+            // PDF 预览框
+        </div>
+    </div>
+
+
+<script src="/js/bootstrap.bundle.js"></script>
+<script src="/js/jquery-3.6.0.js"></script>
+<script src="/js/jquery.media.js"></script>
+</body>
+</html>

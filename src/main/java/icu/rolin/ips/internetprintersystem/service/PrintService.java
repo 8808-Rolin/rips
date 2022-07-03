@@ -5,11 +5,16 @@ import com.google.common.base.Splitter;
 import icu.rolin.ips.internetprintersystem.configure.Constants;
 import icu.rolin.ips.internetprintersystem.controller.AjaxController;
 import icu.rolin.ips.internetprintersystem.model.ImageParam;
+import icu.rolin.ips.internetprintersystem.model.PdfParam;
 import icu.rolin.ips.internetprintersystem.model.ResponseVO;
 import icu.rolin.ips.internetprintersystem.model.UpPrint;
 import icu.rolin.ips.internetprintersystem.util.FileUtils;
+import icu.rolin.ips.internetprintersystem.util.PrintUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.printing.PDFPrintable;
+import org.apache.pdfbox.printing.Scaling;
 import org.springframework.stereotype.Service;
 
 import javax.print.Doc;
@@ -22,14 +27,21 @@ import javax.print.attribute.ResolutionSyntax;
 import javax.print.attribute.standard.Copies;
 import javax.print.attribute.standard.MediaSizeName;
 import javax.print.attribute.standard.PrinterResolution;
+import javax.print.attribute.standard.Sides;
+import java.awt.print.Book;
+import java.awt.print.PageFormat;
+import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+
+import static icu.rolin.ips.internetprintersystem.util.PrintUtil.getPaper;
 
 /**
  * 负责打印的业务请求
@@ -75,15 +87,12 @@ public class PrintService {
         }
         // 这下才能真正的开整！
         InputStream fis = null;
-        String printerName = "";
-        switch (up.getPp().getPrintName()) {
-            case "b185":
-                printerName = "KONICA MINOLTA 185-8";
-                break;
-            default:
-                logger.error("不存在此打印机 805");
-                return 805;
+        String printerName = PrintUtil.getPrinterNameFromParam(up.getPp().getPrintName());
+        if(printerName.equals("")){
+            logger.error("不存在此打印机 805");
+            return 805;
         }
+
         try {
             // 设置打印格式
             DocFlavor flavor = DocFlavor.INPUT_STREAM.JPEG;
@@ -132,6 +141,107 @@ public class PrintService {
             return 808;
         }
 
+        return 0;
+    }
+
+    /**
+     * 返回数值对应状态如下：
+     * 700: 文件不存在，请联系管理 805 不存在此打印机 806: 未找到可用打印机 807 无可用打印机
+     * 701:缩放值错误 702 方向值错误 703 数量错误
+     * @param pdfParam pdf参数
+     * @return 返回特定代码
+     */
+    public int printPDF(PdfParam pdfParam) {
+        String pdfFile = Constants.savePath + "\\" + pdfParam.getPdfName();
+        File file = new File(pdfFile);
+        if (!file.exists()){
+            return 700;
+        }
+        String printerName = PrintUtil.getPrinterNameFromParam(pdfParam.getPrinter());
+        if(printerName.equals("")) return 805;
+
+        PDDocument document = null;
+        try {
+            document = PDDocument.load(file);
+            PrinterJob printJob = PrinterJob.getPrinterJob();
+            printJob.setJobName(file.getName());
+
+            if (printerName != null) {
+                // 查找并设置打印机
+                //获得本台电脑连接的所有打印机
+                javax.print.PrintService[] printServices = PrinterJob.lookupPrintServices();
+                if (printServices == null || printServices.length == 0) {
+                    System.out.print("打印失败，未找到可用打印机，请检查。");
+                    return 806;
+                }
+                javax.print.PrintService printService = null;
+                //匹配指定打印机
+                for (int i = 0; i < printServices.length; i++) {
+                    System.out.println(printServices[i].getName());
+                    if (printServices[i].getName().contains(printerName)) {
+                        printService = printServices[i];
+                        break;
+                    }
+                }
+
+                if (printService != null) {
+                    printJob.setPrintService(printService);
+                } else {
+                    System.out.print("打印失败，未找到名称为" + printerName + "的打印机，请检查。");
+                    return 807;
+                }
+            }
+
+            //设置纸张及缩放
+            Scaling scaling;
+            switch (pdfParam.getZoom()){
+                case 0:
+                    scaling = Scaling.ACTUAL_SIZE;
+                    break;
+                case 1:
+                    scaling = Scaling.SCALE_TO_FIT;
+                    break;
+                case 2:
+                    scaling = Scaling.SHRINK_TO_FIT;
+                    break;
+                case  3:
+                    scaling = Scaling.STRETCH_TO_FIT;
+                    break;
+                default:
+                    return 701;
+            }
+            PDFPrintable pdfPrintable = new PDFPrintable(document, scaling);
+
+
+            //设置多页打印
+            Book book = new Book();
+            PageFormat pageFormat = new PageFormat();
+
+            //参数验证
+            if(pdfParam.getNum() <= 0) return 703;
+            if (pdfParam.getDirection() > 2 || pdfParam.getDirection() < 0) return 702;
+
+            //设置打印
+            pageFormat.setOrientation(pdfParam.getDirection());//纵向
+            pageFormat.setPaper(getPaper());//设置纸张
+            book.append(pdfPrintable, pageFormat, document.getNumberOfPages());
+            printJob.setPageable(book);
+            printJob.setCopies(pdfParam.getNum());//设置打印份数
+            //添加打印属性
+            HashPrintRequestAttributeSet pars = new HashPrintRequestAttributeSet();
+            pars.add(Sides.ONE_SIDED); //设置单双页
+            printJob.print(pars);
+        } catch (IOException | PrinterException e) {
+            logger.warn(e.getMessage());
+        }finally {
+            if (document != null) {
+                try {
+                    document.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
         return 0;
     }
 }

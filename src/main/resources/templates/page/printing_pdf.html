@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="/css/common_css/common.css">
-    <link rel="stylesheet" href="/css/print-me.css">
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/pc_css/pdf-print.css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
@@ -25,5 +25,119 @@
 </head>
 <body>
 
+<div id="wrapper">
+    <div th:replace="~{commons/public::pc-menu}"></div>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content ">
+            <div class="container-fluid mt-5">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class=" text-black fw-bolder fs-1">
+                        PDF文档打印 <span class="text-secondary fs-6 fw-normal d-none d-md-block">请上传 PDF 格式文件</span>
+                    </h1>
+                    <a class="btn btn-primary btn-icon-split " id="choose-pdf">
+                        <span class="icon text-white-50">
+                          <i class="bi bi-cloud-arrow-up-fill"></i>
+                        </span>
+                            <span class="text text-white">上传PDF</span>
+                    </a>
+                </div>
+
+
+
+                <div class="row">
+                    <input class="d-none" title="选择PDF" type="file" name="file" id="pdf-input" accept="application/pdf,application/x-pdf"/>
+                    <div class="col-lg-6 ">
+                        <div class="card shadow bg-white mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">PDF预览</h6>
+                            </div>
+                            <div class="card-body p-0 bg-white" style="height: 85vh">
+                                <div id="pdf-none" style="cursor: pointer" class=" d-flex bg-secondary  h-100 w-100 bg-opacity-50 align-items-center justify-content-center">
+                                    <p class="fs-1 text-white">请先上传文件</p>
+                                </div>
+                                <div class="panel-body h-100 d-none" id="pdf-panel">
+                                    <a class="media" id="pdf-show"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 ">
+                        <div class="card shadow bg-white mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">打印设置</h6>
+                            </div>
+                            <div class="card-body p-0 bg-white d-flex flex-column align-items-center justify-content-between">
+                                <div class="w-100 d-flex flex-column align-items-center justify-content-around m-5">
+                                    <div class="w-100 d-flex flex-row justify-content-around align-items-center mb-3">
+                                        <p class="m-0 fs-5 fw-bold">纸张大小</p>
+                                        <select class="form-select select-common" id="size">
+                                            <option selected value="4">ISO_A4</option>
+                                            <option disabled value="5">ISO_A5</option>
+                                            <option disabled value="3">ISO_A3</option>
+                                        </select>
+                                    </div>
+                                    <div class="w-100 d-flex flex-row justify-content-around align-items-center mb-3">
+                                        <p class="m-0 fs-5 fw-bold">打印方向</p>
+                                        <select class="form-select select-common" id="direction">
+                                            <option selected value="1">纵向打印 PORTRAIT</option>
+                                            <option  value="0">横向打印 LANDSCAPE</option>
+                                            <option  value="2">横向反转 REVERSE_LANDSCAPE</option>
+                                        </select>
+                                    </div>
+                                    <div class="w-100 d-flex flex-row justify-content-around align-items-center mb-3">
+                                        <p class="m-0 fs-5 fw-bold">缩放方式</p>
+                                        <select class="form-select select-common" id="zoom">
+                                            <option selected value="0">实际尺寸 ACTUAL_SIZE</option>
+                                            <option  value="1">缩放至合适 SCALE_TO_FIT</option>
+                                            <option  value="2">缩小至合适 SHRINK_TO_FIT</option>
+                                            <option  value="3">拉伸至合适 STRETCH_TO_FIT</option>
+                                        </select>
+                                    </div>
+                                    <div class="w-100 d-flex flex-row justify-content-around align-items-center mb-3">
+                                        <p class="m-0 fs-5 fw-bold">打印份数</p>
+                                        <input type="number" class="select-common form-select" id="num" value="1" />
+                                    </div>
+                                </div>
+                                <div class="w-100 d-flex flex-row justify-content-around align-items-center" style="height: 120px">
+                                    <select class="form-select " style="width:50%" id="printer">
+                                        <option selected value="b185">KONICA MINOLTA b185e</option>
+                                    </select>
+                                    <button id="submit" disabled="disabled">加入打印队列</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div th:replace="~{commons/public::pc_footer}"></div>
+    </div>
+</div>
+<div th:replace="~{commons/public::ajax}"></div>
+
+
+<!-- Bootstrap core JavaScript-->
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/js/sb-admin-2.min.js"></script>
+<script src="/js/cropper.js"></script>
+<script src="/js/jquery-cropper.js"></script>
+<script src="/js/jquery.media.js"></script>
+<script src="/js/pdf-print.js"></script>
+<script>
+    $("#print_menu").addClass("active");
+    $('#print_item_pdf').addClass("active")
+    $('#collapseTwo').addClass("show")
+</script>
 </body>
 </html>

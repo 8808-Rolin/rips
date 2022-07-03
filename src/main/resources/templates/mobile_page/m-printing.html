@@ -13,15 +13,7 @@
 </head>
 
 <body>
-<nav class="navbar nav-me navbar-light">
-    <div class="container">
-        <a class="d-flex align-items-center text-decoration-none " href="/">
-            <img src="/img/logo-256.png" alt="" class="d-inline-block align-text-top logo-me"
-                 style="margin-right: 16px">
-            <span class="fs-1 text-black fw-bolder">互联自助打印服务</span>
-        </a>
-    </div>
-</nav>
+<div th:replace="~{commons/mobile_public::nav}"></div>
 
 <section>
     <div class="container-fluid d-flex flex-column justify-content-center align-items-center mt-5">
@@ -157,14 +149,7 @@
     </div>
 </section>
 
-<!-- ajax加载动画 -->
-<div id="loading" class=" position-absolute h-100 w-100 d-flex justify-content-center align-items-center d-none" style="top: 0;left:0;background-color: rgba(223, 224, 232, 0.6);">
-    <div class="d-flex align-items-center ">
-        <strong class="fs-1">正在提交中，请稍等片刻......   </strong>
-        <div class="spinner-border ms-auto" role="status" aria-hidden="true"
-             style="width: 4em;height: 4em;"></div>
-    </div>
-</div>
+<div th:replace="~{commons/public::ajax}"></div>
 
 
 <script src="/js/bootstrap.bundle.js"></script>

@@ -48,13 +48,31 @@ public class AjaxController {
         return bytes;
     }
 
+    /**
+     * 用户通过该接口，获取对应PDF
+     * @param in 图片名称
+     * @return 返回一张图片
+     * @throws IOException 抛出异常
+     */
+    @RequestMapping(value = "/pdf/{pdfName}", produces = MediaType.APPLICATION_PDF_VALUE)
+    public byte[] getPdf(@PathVariable("pdfName") String in) throws IOException {
+        File file = new File(Constants.savePath + "\\" + in);
+        if (!file.exists()) {
+            return null;
+        }
+        FileInputStream fis = new FileInputStream(file);
+        byte[] bytes = new byte[fis.available()];
+        fis.read(bytes, 0, fis.available());
+        return bytes;
+    }
+
 
     /**
-     *  上传临时图片存放并返回名称
+     *  上传临时文件存放并返回名称
      * @param file 表单上传文件，名字file
-     * @return 返回临时图片名字给前端，前端可以使用该名字获取图片
+     * @return 返回临时文件名字给前端，前端可以使用该名字获取图片
      */
-    @RequestMapping(value = "/upload/temp-image.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/upload/temp-upload.do", method = RequestMethod.POST)
     public ResponseVO tempImageUpload(@RequestParam("file") MultipartFile file) {
         if (Objects.isNull(file) || file.isEmpty()) {
             return new ResponseVO(400, "上传的文件为空");
@@ -109,6 +127,39 @@ public class AjaxController {
                 break;
             default:
                 message = "unknown error";
+        }
+        return new ResponseVO(res,message);
+    }
+
+
+    /**
+     *  接受打印PDF请求
+     * @param pdfParam PDF参数
+     * @return 返回指定代码
+     */
+    @RequestMapping(value = "/print/pdf",method = RequestMethod.POST)
+    public ResponseVO printPDF(@RequestBody PdfParam pdfParam){
+        int res = printService.printPDF(pdfParam);
+        String message = "";
+        switch (res){
+            case 0:
+                message = "已将PDF文件加入打印队列，请耐心等待打印完成";
+                break;
+            case 700:
+                message = "文件不存在，请联系管理员";
+                break;
+            case 805:
+            case 806:
+            case 807:
+                message = "获取打印机失败，请联系管理员";
+                break;
+            case 701:
+            case 702:
+            case 703:
+                message = "参数错误！";
+                break;
+            default:
+                message = "unkown error";
         }
         return new ResponseVO(res,message);
     }
