@@ -17,6 +17,7 @@
         <img src="/img/logo-256.png" width="192px" class="img">
         <p class=" fs-1 fw-bolder text-danger">PDF印刷</p>
         <p class=" fs-4  text-secondary">请上传PDF文件</p>
+        <input class="d-none" title="选择PDF" type="file" name="file" id="pdf-input" accept="application/pdf,application/x-pdf"/>
         <div class="row w-100 mt-5">
             <div class="div-shadow card-common col-12" id="choose-pdf">
                 <div class="icon">
@@ -28,14 +29,89 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 ">
-            // PDF 预览框
+        <div class="col-12 div-shadow pdf-preview mt-5" id="pdf-preview">
+            <div class="w-100 d-flex justify-content-start align-items-center preview-title">
+                PDF预览框
+            </div>
+            <div class="flex-fill preview-body w-100" >
+                <div id="pdf-none" style="cursor: pointer" class=" d-flex bg-secondary  h-100 w-100 bg-opacity-25 align-items-center justify-content-center">
+                    <p class="fs-1 text-white">请先上传文件</p>
+                </div>
+                <div class="panel-body h-100 d-none" id="pdf-panel">
+                    <a class="media" id="pdf-show"></a>
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="col-12 div-shadow pdf-preview mt-5 overflow-hidden ">
+            <div class="w-100 d-flex justify-content-start align-items-center preview-title">
+                温馨提示
+            </div>
+            <div class="flex-fill w-100 p-3" >
+                <p>欢迎使用乌托邦互联自助打印服务</p>
+                <p>
+                    &nbsp;&nbsp;1. 请先确保你处在乌托邦内网环境中，连接至WIFI：乌托邦、乌托邦_5G，或使用网线连接至乌托邦网络中。<br>
+                    &nbsp;&nbsp;2. 目前应用提供的功能较为有限，将在未来逐步完善。<br>
+                    &nbsp;&nbsp;3. 机器冷启动时需要预热15s - 60s 请耐心等待<br>
+                    &nbsp;&nbsp;4.
+                    使用本服务时，你所打印的文档将在服务器中留存存档30天，30天后将自动删除，文档将加密保存，请放心使用，当你点击打印时，将默认同意本条事项。<br>
+                    &nbsp;&nbsp;5. 乌托邦互联自助打印服务：<a
+                        href="http://print.30202.co/">http://print.30202.co/</a> （内网）<br>
+                </p>
+                <p>--- 部分手机选择PDF文件之后可能无法正常显示文件内容，但是是能够正常打印的</p>
+            </div>
+        </div>
 
+        <div class="col-12 div-shadow printer-settings overflow-hidden mt-5  mb-5 d-flex flex-column justify-content-start align-items-center">
+            <div class="w-100 d-flex justify-content-start align-items-center preview-title">
+                打印设定
+            </div>
+            <div class="p-0 bg-white d-flex flex-column align-items-center justify-content-between">
+                <div class="w-100 d-flex flex-column align-items-center justify-content-around m-2">
+                    <div class="w-100 d-flex flex-row justify-content-around align-items-center mb-3">
+                        <p class="m-0 fs-5 fw-bold">纸张大小</p>
+                        <select class="form-select select-common" id="size">
+                            <option selected value="4">ISO_A4</option>
+                            <option disabled value="5">ISO_A5</option>
+                            <option disabled value="3">ISO_A3</option>
+                        </select>
+                    </div>
+                    <div class="w-100 d-flex flex-row justify-content-around align-items-center mb-3">
+                        <p class="m-0 fs-5 fw-bold">打印方向</p>
+                        <select class="form-select select-common" id="direction">
+                            <option selected value="1">纵向打印 PORTRAIT</option>
+                            <option  value="0">横向打印 LANDSCAPE</option>
+                            <option  value="2">横向反转 REVERSE_LANDSCAPE</option>
+                        </select>
+                    </div>
+                    <div class="w-100 d-flex flex-row justify-content-around align-items-center mb-3">
+                        <p class="m-0 fs-5 fw-bold">缩放方式</p>
+                        <select class="form-select select-common" id="zoom">
+                            <option selected value="0">实际尺寸 ACTUAL_SIZE</option>
+                            <option  value="1">缩放至合适 SCALE_TO_FIT</option>
+                            <option  value="2">缩小至合适 SHRINK_TO_FIT</option>
+                            <option  value="3">拉伸至合适 STRETCH_TO_FIT</option>
+                        </select>
+                    </div>
+                    <div class="w-100 d-flex flex-row justify-content-around align-items-center mb-3">
+                        <p class="m-0 fs-5 fw-bold">打印份数</p>
+                        <input type="number" class="select-common form-select" id="num" value="1" />
+                    </div>
+                </div>
+            </div>
+            <div class="w-100 d-flex flex-column justify-content-center align-items-center printer-submit">
+                <select class="form-select " style="width:50%" id="printer">
+                    <option selected value="b185">KONICA MINOLTA b185e</option>
+                </select>
+                <button id="submit" disabled="disabled">加入打印队列</button>
+            </div>
+        </div>
+
+    </div>
+    <div th:replace="~{commons/public::ajax}"></div>
 
 <script src="/js/bootstrap.bundle.js"></script>
 <script src="/js/jquery-3.6.0.js"></script>
 <script src="/js/jquery.media.js"></script>
+<script src="/js/pdf-print.js"></script>
 </body>
 </html>

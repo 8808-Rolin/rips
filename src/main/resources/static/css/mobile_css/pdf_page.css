@@ -22,3 +22,46 @@
     padding-left: 0!important;
     background-image: linear-gradient(to right, #a18cd1 0%, #fbc2eb 100%);
 }
+
+#pdf-preview{
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    overflow: hidden;
+}
+.preview-title{
+    height: 72px;
+    padding-left: 72px;
+    font-size: 1.6em;
+    font-weight: bold;
+    color: white;
+    background-image: linear-gradient(to right, #a18cd1 0%, #fbc2eb 100%);
+}
+.printer-submit{
+    height: 130px;
+}
+
+#submit{
+    font-size: 24px;
+    font-weight: bolder;
+    background-image: linear-gradient(to right, #a18cd1 0%, #fbc2eb 100%);
+    border: none;
+    color: white;
+    width:50%;
+    margin-top: 12px;
+    border-radius: 12px;
+    height: 48px ;
+}
+#printer{
+    margin-left: 24px;
+    border: none;
+    font-size: 20px;
+    outline: none;
+}
+.select-common{
+    width: 65%;
+    height: 48px;
+    font-size: 1.5rem;
+}
